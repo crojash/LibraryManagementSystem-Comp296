@@ -12,7 +12,7 @@ application package - The main class
 lms.ui - Everything related to GUIs 
 
 
-//For now just login is completed
+    //For now just login is completed
 
 
 lms.db - Everything related to Database.
