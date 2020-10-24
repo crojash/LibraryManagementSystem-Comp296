@@ -20,5 +20,5 @@ lms.ui - Everything related to GUIs
 lms.db - Everything related to Database.
 
 
-testDBandCheck - is to test the other two classes retrieving information from database
+    testDBandCheck - is to test the other two classes retrieving information from database
 
