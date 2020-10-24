@@ -4,3 +4,15 @@ Java
 JavaFX
 MySQL
 
+
+
+application package - The main class
+
+
+lms.ui - Everything related to GUIs 
+//For now just login is completed
+
+
+lms.db - Everything related to Database.
+testDBandCheck - is to test the other two classes retrieving information from database
+
