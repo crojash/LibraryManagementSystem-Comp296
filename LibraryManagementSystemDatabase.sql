@@ -13,27 +13,27 @@ USE LMS;
 -- Create Tables
 CREATE TABLE Books
 (
-	bookID		INT				PRIMARY KEY	AUTO_INCREMENT,
-    book_title	VARCHAR(100)		NOT NULL,
-    ISBN		VARCHAR(45)		NOT NULL,
-    rating	 	DECIMAL(9, 2)	NOT NULL
+	bookID		INT			PRIMARY KEY	AUTO_INCREMENT,
+    	book_title	VARCHAR(100)		NOT NULL,
+    	ISBN		VARCHAR(45)		NOT NULL,
+    	rating	 	DECIMAL(9, 2)		NOT NULL
 );
 
 CREATE TABLE Students
 (
-	studentID			INT			PRIMARY KEY	AUTO_INCREMENT,
-    student_first_name	VARCHAR(45)	NOT NULL,
-    student_last_name	VARCHAR(45)	NOT NULL,
-    student_email		VARCHAR(45)	NOT NULL
+	studentID		INT		PRIMARY KEY	AUTO_INCREMENT,
+    	student_first_name	VARCHAR(45)	NOT NULL,
+    	student_last_name	VARCHAR(45)	NOT NULL,
+    	student_email		VARCHAR(45)	NOT NULL
 );
 
 CREATE TABLE Books_Borrowed
 (
-	-- booksB_ID	INT				PRIMARY KEY,
-    bookID		INT				UNIQUE,
-    studentID	INT 			UNIQUE,
-    bb_date		DATE			NOT NULL,
-    return_date	DATE			NOT NULL,
+	-- booksB_ID	INT		PRIMARY KEY,
+    bookID		INT		UNIQUE,
+    studentID		INT 		UNIQUE,
+    bb_date		DATE		NOT NULL,
+    return_date		DATE		NOT NULL,
     fine		DECIMAL(9, 2)	NOT NULL,
     CONSTRAINT Books_Borrowed_fk_Students
 		FOREIGN KEY(studentID)
@@ -46,21 +46,21 @@ CREATE TABLE Books_Borrowed
 
 CREATE TABLE Authors
 (
-	authorID			INT 		PRIMARY KEY	AUTO_INCREMENT,
-    author_first_name	VARCHAR(45)	NOT NULL,
-    author_last_name	VARCHAR(45)	NOT NULL
+	authorID		INT 		PRIMARY KEY	AUTO_INCREMENT,
+    	author_first_name	VARCHAR(45)	NOT NULL,
+    	author_last_name	VARCHAR(45)	NOT NULL
 );
 
 CREATE TABLE Genres
 (
-	genreID	INT			PRIMARY KEY	AUTO_INCREMENT,
-    genre	VARCHAR(45)	NOT NULL
+	genreID	INT		PRIMARY KEY	AUTO_INCREMENT,
+   	genre	VARCHAR(45)	NOT NULL
 );
 
 CREATE TABLE Book_Genres
 (
 	bookID	INT	NOT NULL,
-    genreID	INT NOT NULL,
+    	genreID	INT 	NOT NULL,
     CONSTRAINT Book_genre_fk_Books
 		FOREIGN KEY(bookID)
 			REFERENCES Books(bookId),
@@ -72,7 +72,7 @@ CREATE TABLE Book_Genres
 CREATE TABLE Book_Authors
 (
 	bookID		INT NOT NULL,
-    authorID	INT NOT NULL,
+   	authorID	INT NOT NULL,
     CONSTRAINT Book_Authors_fk_Books
 		FOREIGN KEY(bookID)
 			REFERENCES Books(bookID),
@@ -84,7 +84,7 @@ CREATE TABLE Book_Authors
 CREATE TABLE Publishers
 (
 	pubID		INT 		PRIMARY KEY AUTO_INCREMENT,
-    pub_name	VARCHAR(45)	NOT NULL
+    	pub_name	VARCHAR(45)	NOT NULL
 );
 
 CREATE TABLE Book_Publisher
@@ -102,7 +102,7 @@ CREATE TABLE Book_Publisher
 CREATE TABLE Users
 (
 	username 	VARCHAR(45)	NOT NULL	UNIQUE,
-    password1	VARCHAR(45)	NOT NULL
+    	password1	VARCHAR(45)	NOT NULL
 );
 
 -- Insert rows into the tables
