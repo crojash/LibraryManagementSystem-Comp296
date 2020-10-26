@@ -13,7 +13,9 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(Main.class.getResource("/lms/ui/login/login.fxml"));
+			//root.getStylesheets().add("/application/test.css");
 			primaryStage.setScene(new Scene(root));
+			primaryStage.setTitle("Login Screen");
 			primaryStage.show();
 			
 		} catch(Exception e) {
