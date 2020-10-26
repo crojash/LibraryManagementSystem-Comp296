@@ -27,3 +27,7 @@ lms.db - Everything related to Database.
     
 Librarian GUI is not finished. I just started working on it.
 
+
+
+
+I tested some things with css, but is not really that much. 
