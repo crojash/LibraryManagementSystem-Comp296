@@ -15,13 +15,13 @@ lms.ui - Everything related to GUIs
 
 
     //For now just login is completed
-
+    //Working on user interfaces for Librarian
 
 lms.db - Everything related to Database.
 
 
     testDBandCheck - is to test the other two classes retrieving information from database
-    
+    //Working on Book and Student
     
     
     
