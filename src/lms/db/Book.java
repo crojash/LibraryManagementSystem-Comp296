@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javafx.collections.FXCollections;
+
 public class Book {
 
 	private Connection_To_Server conn = new Connection_To_Server();
@@ -29,7 +31,7 @@ public class Book {
 		con = conn.getConnectiontoDB();
 	}
 	
-	public Boolean insertBook() {
+	public boolean insertBook() {
 		try {
 			String query = "INSERT INTO Books (book_title, ISBN, isAvail) VALUES (?, ?, ?)";
 			preparedStatement = con.prepareStatement(query);
@@ -48,7 +50,7 @@ public class Book {
 		return false;
 	}
 	
-	public Boolean insertAuthor(String Author) {
+	public boolean insertAuthor(String Author) {
 		try {
 			String query = "INSERT INTO Authors (author_Name) VALUES(?)";
 			preparedStatement = con.prepareStatement(query);
@@ -63,7 +65,7 @@ public class Book {
 		return false;
 	}
 
-	public Boolean insertAuthorMTM(String author){
+	public boolean insertAuthorMTM(String author){
 		try{
 			String query = "SELECT * FROM Authors WHERE author_name = ?";
 			preparedStatement = con.prepareStatement(query);
@@ -98,12 +100,13 @@ public class Book {
 		return false;
 	}
 
-	public Boolean insertGenre(String Genre) {
+	public boolean insertGenre(String Genre) {
 		try {
 			String query = "INSERT INTO genres (genre) VALUES(?)";
 			preparedStatement = con.prepareStatement(query);
 			preparedStatement.setString(1, Genre);
 			preparedStatement.execute();
+			insertGenreMTM(Genre);
 			return true;
 		}
 		catch(SQLException ex) {
@@ -112,12 +115,47 @@ public class Book {
 		return false;
 	}
 
+	public boolean insertGenreMTM(String Genre) {
+		try {
+			String query = "SELECT * FROM Genres WHERE genre = ?";
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, Genre);
+			preparedStatement.execute();
+			ResultSet rs = preparedStatement.getResultSet();
+			int genreID = 0;
+			while(rs.next()) {
+				genreID = rs.getInt(1);
+			}
+			query = "SELECT * FROM books WHERE book_title = ? AND ISBN = ?";
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, this.title);
+			preparedStatement.setString(2, this.ISBN);
+			preparedStatement.execute();
+			ResultSet rx = preparedStatement.getResultSet();
+			int bookID = 0;
+			while(rx.next()){
+				bookID = rx.getInt(1);
+			}
+			query = "INSERT INTO book_genres VALUES(?,?)";
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setInt(1, bookID);
+			preparedStatement.setInt(2, genreID);
+			preparedStatement.execute();
+			return true;
+		}
+		catch(SQLException ex) {
+			System.out.println(ex.toString());
+		}
+		return false;
+	}
+	
 	public boolean insertPublisher(String Publisher){
 		try{
 			String query = "INSERT INTO publishers (pub_name) VALUES(?)";
 			preparedStatement = con.prepareStatement(query);
 			preparedStatement.setString(1, Publisher);
 			preparedStatement.execute();
+			insertPublisherMTM(Publisher);
 			return true;
 		}
 		catch(SQLException ex){
@@ -125,8 +163,47 @@ public class Book {
 		}
 		return false;
 	}
-	//still needs Work
-	public Boolean deleteBook(int bookID) {
+	
+	public boolean insertPublisherMTM(String Publisher) {
+		try {
+			String query = "SELECT * FROM Publishers WHERE pub_name = ?";
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, Publisher);
+			preparedStatement.execute();
+			ResultSet rs = preparedStatement.getResultSet();
+			int publisherID = 0;
+			while(rs.next()) {
+				publisherID = rs.getInt(1);
+			}
+			query = "SELECT * FROM books WHERE book_title = ? AND ISBN = ?";
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, this.title);
+			preparedStatement.setString(2, this.ISBN);
+			preparedStatement.execute();
+			ResultSet rx = preparedStatement.getResultSet();
+			int bookID = 0;
+			while(rx.next()){
+				bookID = rx.getInt(1);
+			}
+			query = "INSERT INTO book_publisher VALUES (?,?)";
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setInt(1, bookID);
+			preparedStatement.setInt(2, publisherID);
+			preparedStatement.execute();
+			return true;
+		}
+		catch(SQLException ex) {
+			System.out.println(ex.toString());
+		}
+		return false;
+	}
+	
+	public boolean view() {
+		
+		return false;
+	}
+
+	public boolean deleteBook(int bookID) {
 		try{
 			String query = "DELETE FROM Books WHERE bookID = ?";
 			preparedStatement = con.prepareStatement(query);

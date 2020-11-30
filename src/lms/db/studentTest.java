@@ -7,6 +7,8 @@ public class studentTest {
 		//System.out.println(st.insertStudent());
 		//Student st1 = new Student();
 		//System.out.println(st1.deleteStudent(2));
+		Student st2 = new Student();
+		st2.deleteStudent(1);
 	}
 
 }

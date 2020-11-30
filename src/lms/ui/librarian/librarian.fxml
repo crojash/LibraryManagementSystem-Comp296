@@ -1,10 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="1026.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lms.ui.librarian.librarianController">
-   <children>
-      <Button fx:id="button1" layoutX="495.0" layoutY="253.0" mnemonicParsing="false" onAction="#onActionButton" text="Button" />
-   </children>
-</Pane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lms.ui.librarian.librarianController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <right>
+      <VBox prefHeight="542.0" prefWidth="154.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#addBookOnAction" prefHeight="92.0" prefWidth="156.0" text="Add Book">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font></Button>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteBookOnAction" prefHeight="92.0" prefWidth="156.0" text="Delete Book">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font></Button>
+            <Button layoutX="10.0" layoutY="96.0" mnemonicParsing="false" onAction="#addStudentOnACtion" prefHeight="94.0" prefWidth="160.0" text="Add Student">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="182.0" mnemonicParsing="false" onAction="#deleteStudentOnAction" prefHeight="90.0" prefWidth="157.0" text="Delete Student">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font></Button>
+            <Button layoutX="10.0" layoutY="268.0" mnemonicParsing="false" onAction="#updateOnClick" prefHeight="90.0" prefWidth="154.0" text="UPDATE VIEW">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font></Button>
+            <Button layoutX="10.0" layoutY="354.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="155.0" text="Add Book" />
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <TableView fx:id="bookView" prefHeight="596.0" prefWidth="822.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="title" prefWidth="455.0000305175781" text="Title" />
+          <TableColumn fx:id="bookID" minWidth="0.0" prefWidth="66.0" text="Book ID" />
+            <TableColumn fx:id="author" prefWidth="182.0" text="Author(s)" />
+            <TableColumn fx:id="publisher" prefWidth="208.0" text="Publisher(s)" />
+            <TableColumn fx:id="genre" prefWidth="131.0" text="Genre" />
+            <TableColumn fx:id="availability" prefWidth="100.0" text="Availability" />
+            <TableColumn fx:id="edit" prefWidth="103.0" text="Edit" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <Pane prefHeight="69.0" prefWidth="1242.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
