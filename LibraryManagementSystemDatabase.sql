@@ -155,4 +155,21 @@ INNER JOIN
 INNER JOIN 
 	Publishers AS p ON bp.pubID = p.pubID;
     
+CREATE VIEW TRANSACTIONS AS
+SELECT
+	CONCAT(s.student_first_name, ' ', s.student_last_name) AS 'Name',
+    b.book_title AS 'Book',
+    bb.bb_date AS 'Transaction date',
+    bb.return_date AS 'return date',
+    bb.fine AS 'fine' 
+FROM 
+	Books_borrowed AS bb
+INNER JOIN 
+	Students AS s ON bb.studentID = s.studentID
+INNER JOIN
+	Books AS b ON bb.bookID = b.bookID
+    
+
+	
+
 -- SELECT * FROM BOOK
