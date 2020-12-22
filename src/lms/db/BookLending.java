@@ -59,7 +59,7 @@ public class BookLending {
 		return false;
 	}
 	
-	public Boolean returnBook(int bookID) {
+	public boolean returnBook(int bookID) {
 		try {
 			String query = "DELETE FROM Books_Borrowed WHERE bookID = ?";
 			preparedStatement = con.prepareStatement(query);

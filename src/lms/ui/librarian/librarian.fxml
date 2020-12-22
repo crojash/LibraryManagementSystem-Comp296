@@ -57,7 +57,10 @@
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font></Button>
-            <Button layoutX="10.0" layoutY="354.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="155.0" text="Add Book" />
+            <Button layoutX="10.0" layoutY="354.0" mnemonicParsing="false" onAction="#openViewOnClick" prefHeight="96.0" prefWidth="155.0" text="Students View">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font></Button>
          </children>
       </VBox>
    </right>

@@ -100,7 +100,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#viewBookOnClick" prefHeight="100.0" prefWidth="161.0" text="View Books" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#viewStudentOnClick" prefHeight="100.0" prefWidth="161.0" text="View Students" />
-            <Button layoutX="10.0" layoutY="58.0" mnemonicParsing="false" onAction="#viewTransactionOnClick" prefHeight="100.0" prefWidth="161.0" text="View Transactions" />
+            <Button layoutX="10.0" layoutY="58.0" mnemonicParsing="false" onAction="#viewTransactionOnClick" opacity="0.0" prefHeight="100.0" prefWidth="161.0" text="View Transactions" />
          </children></VBox>
    </right>
 </BorderPane>

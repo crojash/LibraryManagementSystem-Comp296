@@ -70,6 +70,12 @@ public class librarianController {
     void deleteStudentOnAction(ActionEvent event) {
     	openWindow("/lms/ui/librarian/deleteStudent.fxml");
     }
+    
+    @FXML
+    void openViewOnClick(ActionEvent event) {
+    	openWindow("/lms/ui/member/viewStudents.fxml");
+    }
+    
     @FXML
     void updateOnClick(ActionEvent event) {
     	populateBookView();
